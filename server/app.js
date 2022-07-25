@@ -2,12 +2,17 @@ import express from 'express'
 import mongoose from 'mongoose'
 import { createServer } from 'http'
 import { MONGODB_URI } from './config.js'
+import authRouter from './routes/auth.routes.js'
 
 const app = express()
 
 const PORT = process.env.PORT || 5000
 
 const server = createServer(app)
+
+app.use(express.json({ extended: true }))
+
+app.use('/api/auth/', authRouter)
 
 try {
     mongoose.connect(MONGODB_URI, {
