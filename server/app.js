@@ -1,6 +1,6 @@
 import express from 'express'
 import mongoose from 'mongoose'
-import { createServer, Server } from 'http'
+import { createServer } from 'http'
 import { MONGODB_URI, ALLOWED_ORIGIN } from './config.js'
 import cors from 'cors'
 import { Server } from 'socket.io'

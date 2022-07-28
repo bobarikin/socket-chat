@@ -1,4 +1,4 @@
-const users = []
+let users = []
 
 export default function userHandlers(io, socket) {
     const { userName } = socket
@@ -14,10 +14,10 @@ export default function userHandlers(io, socket) {
         updateUserList()
     })
 
-    socket.on('disconnect', async () => {
+    socket.on('disconnect', () => {
         if (!users) return
-        socket.emit('log', `User ${userName} disconnected.`)
-        users = users.filter(u => u.socketId !== socket.id)
+        io.emit('log', `User ${userName} disconnected.`)
+        users = users.filter(u => u.socketId != socket.id)
         updateUserList()
     })
 }
