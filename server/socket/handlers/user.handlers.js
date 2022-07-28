@@ -8,7 +8,7 @@ export default function userHandlers(io, socket) {
     }
 
     socket.on('user:add', async user => {
-        socket.emit('log', `User ${userName} connected!`)
+        socket.broadcast.emit('log', `User ${userName} connected!`)
         user.socketId = socket.id
         users.push(user)
         updateUserList()
