@@ -29,7 +29,13 @@ authRouter.post('/register', async (req, res) => {
 
         await user.save()
 
-        res.status(201).json({
+        const token = jwt.sign({ userId: user.id }, JWT_SECRET, {
+            expiresIn: '3h',
+        })
+
+        res.json({
+            token,
+            userId: user.id,
             message: 'Пользователь успешно зарегистрирован.',
             type: 'success',
         })

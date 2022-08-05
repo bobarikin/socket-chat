@@ -2,6 +2,7 @@ import userHandlers from "./handlers/user.handlers.js"
 import messageHandlers from "./handlers/message.handlers.js"
 
 export default function onConnection(io, socket) {
+    // console.log(socket);
     
     const { userName } = socket.handshake.query
 
